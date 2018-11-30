@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxu.tbvp.mapper.WaysMapper">
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Ways">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="startPlace" jdbcType="VARCHAR" property="startplace" />
+    <result column="endPlace" jdbcType="VARCHAR" property="endplace" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="way" jdbcType="INTEGER" property="way" />
+  </resultMap>
+  <select id="selectWaysById" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      	SELECT count(*)
+		FROM ways
+		where way = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectWaysCount" resultType="java.lang.Integer" >
+      	SELECT count(*)
+		FROM ways
+  </select>
+</mapper>

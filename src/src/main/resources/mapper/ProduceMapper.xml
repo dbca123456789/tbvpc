@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxu.tbvp.mapper.ProduceMapper">
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Produce">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="produceId" jdbcType="INTEGER" property="produceid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="scenics" jdbcType="VARCHAR" property="scenics" />
+    <result column="waySId" jdbcType="CHAR" property="waysid" />
+    <result column="totalAmount" jdbcType="DOUBLE" property="totalamount" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="Images" jdbcType="VARCHAR" property="images" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="End_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+
+  <select id="selectProducePrice" parameterType="int" resultType="double">
+    select price from produce where produceId = #{produceId}
+  </select>
+
+  <select id="selectByProdeceName" parameterType="java.util.HashMap" resultType="com.gxu.tbvp.domain.Produce">
+    select *
+    from produce
+    where title LIKE #{scenic}
+  </select>
+
+  <select id="selectAllScenicsId" resultType="int" >
+    select produceId from produce
+  </select>
+</mapper>

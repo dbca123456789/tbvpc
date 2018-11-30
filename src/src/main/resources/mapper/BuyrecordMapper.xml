@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.BuyrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Buyrecord" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="buyProduceId" property="buyproduceid" jdbcType="INTEGER" />
+    <result column="buyTool" property="buytool" jdbcType="INTEGER" />
+    <result column="buyTime" property="buytime" jdbcType="TIMESTAMP" />
+    <result column="buy_price" property="buyPrice" jdbcType="DOUBLE" />
+    <result column="totalTime" property="totaltime" jdbcType="INTEGER" />
+    <result column="buyCount" property="buycount" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="countPeopleByPrice" resultType="int" parameterType="java.util.Map">
+    SELECT SUM(buyCount) FROM buyrecord WHERE buy_price BETWEEN #{firstPrice} AND #{lastPrice};
+  </select>
+
+  <select id="getUserScenicBuyrecord" parameterType="int" resultType="com.gxu.tbvp.domain.Produce">
+    select * from buyRecord where buyproduceid = #{id} and userid = #{userId}
+  </select>
+</mapper>

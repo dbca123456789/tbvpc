@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxu.tbvp.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="addressId" jdbcType="INTEGER" property="addressid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+  </resultMap>
+
+  <!--<insert id="insertBatch" parameterType="List">
+    INSERT INTO TStudent(name,age)
+    <foreach collection="list" item="item" index="index" open="(" close=")" separator="union all">
+      SELECT #{item.name} as a, #{item.age} as b FROM DUAL
+    </foreach>
+  </insert>-->
+  <update id="autoIncrement">
+    ALTER TABLE `user` AUTO_INCREMENT 0000000;
+  </update>
+
+  <select id="countAge" resultType="int" parameterType="java.util.HashMap">
+    SELECT SUM(age) FROM `user` where age between #{firstAge} and #{lastAge};
+  </select>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.ScenicBuyrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.ScenicBuyrecord" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="scenicId" property="scenicid" jdbcType="INTEGER" />
+    <result column="buy_time" property="buyTime" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="access_count" property="accessCount" jdbcType="INTEGER" />
+    <result column="buy_count" property="buyCount" jdbcType="INTEGER" />
+    <result column="buy_ways" property="buyWays" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <select id="getUserScenicBuyrecord" parameterType="int" resultType="com.gxu.tbvp.domain.ScenicBuyrecord" >
+      select *
+      from scenic_buyrecord
+      where scenicid = #{scenicid} and userid = #{userid}
+  </select>
+</mapper>
